@@ -33,12 +33,10 @@ public class PlayerServiceTest {
 		final Integer pageSize = 30;
 
 		Page<PlayerDto> players = playerService.getAllWithFilterCategory("0", pageSize.toString(), CATEGORY);
-
 		Assertions.assertThat(players.getContent().size()).isEqualTo(pageSize);
 
 		players.forEach(player -> {
 			Assertions.assertThat(player).isNotNull();
-
 			player.getSkills().forEach(skill -> {
 				Assertions.assertThat(skill).isNotNull();
 				Assertions.assertThat(skill.getSkillCategory().name()).isEqualTo(CATEGORY);

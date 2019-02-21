@@ -11,7 +11,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-
 import com.api.gamescore.enums.SkillCategory;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -28,8 +27,8 @@ public class Skill {
 	private SkillCategory skillCategory;
 	@Column(name = "score")
 	private Long score;
-	
-	@ManyToOne(cascade = CascadeType.ALL)
+
+	@ManyToOne(cascade = CascadeType.MERGE)
 	@JoinColumn(name = "player_fk")
 	@JsonIgnore
 	private Player player;
@@ -74,6 +73,5 @@ public class Skill {
 	public void setPlayer(Player player) {
 		this.player = player;
 	}
-	
 
 }
