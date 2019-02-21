@@ -11,6 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity
 @Table(name = "PLAYER")
@@ -73,6 +74,7 @@ public class Player implements Comparator<Player> {
 	}
 
 	@Override
+	@Transient
 	public int compare(Player p1, Player p2) {
 		Long scoreP1 = p1.getSkills().stream().mapToLong(s -> s.getScore()).sum();
 		Long scoreP2 = p2.getSkills().stream().mapToLong(s -> s.getScore()).sum();
